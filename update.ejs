@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Update Form</h2>
+        <form action="http://localhost:3000/usertable/<%= user.id %>/update" method="post">
+            <div class="form-group">
+                <label for="Fullname">First Name</label>
+                <input type="text" id="Fullname" name="Fullname" placeholder="Enter first name" required value="<%= user.Fullname%>" >
+            </div>
+
+            <div class="form-group">
+                <label for="Lastname">Last Name</label>
+                <input type="text" id="Lastname" name="Lastname" placeholder="Enter last name" required value="<%= user.Lastname %>">
+            </div>
+
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="email" id="Email" name="Email" placeholder="Enter email" required value="<%= user.Email %>">
+            </div>
+
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input type="password" id="Password" name="Password" placeholder="Enter password" required value="<%= user.Password %>">
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+    </div>
+</body>
+
+</html>
