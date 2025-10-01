@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Table</title>
+  <link rel="stylesheet" href="../stylesheets/UserTableStyle.css">
+</head>
+
+<body>
+  <!-- Top bar -->
+  <div class="topbar">
+    <!-- Left side: Back + Title -->
+    <div class="left-actions">
+      <a href="http://localhost:3000/usertable" class="btn-top btn-back">⬅ Back</a>
+      <h1>User Records</h1>
+    </div>
+
+    <!-- Right side: Add User + Logout -->
+    <div class="right-actions">
+      <form action="/usertable/adduser" method="GET" style="display:inline;">
+        <button type="submit" class="btn-top btn-user">+ Add User</button>
+      </form>
+      <form action="/logout" method="POST" style="display:inline;">
+        <button type="submit" class="btn-top btn-logout">Logout</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Fullname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (dt.length===0) { %>
+        <tr>
+          <td colspan="4" style="text-align:center; padding:15px; color:#666;">
+            No Any Data
+          </td>
+        </tr>
+        <% } else { %>
+          <% for (let user of dt) { %>
+            <tr>
+              <td>
+                <%= user.Fullname %>
+              </td>
+              <td>
+                <%= user.Lastname %>
+              </td>
+              <td>
+                <%= user.Email %>
+              </td>
+              <td>
+                <!-- Update button -->
+                <form action="/usertable/<%= user.id %>/update" method="GET" style="display:inline;">
+                  <button type="submit" class="btn btn-update">Update</button>
+                </form>
+
+                <!-- Delete button -->
+                <form action="/usertable/<%= user.id %>/delete" method="POST" style="display:inline;">
+                  <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure?')">Delete</button>
+                </form>
+              </td>
+            </tr>
+            <% } %>
+              <% } %>
+    </tbody>
+  </table>
+</body>
+
+</html>
